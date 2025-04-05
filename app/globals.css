@@ -18,7 +18,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -34,5 +33,274 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(20, 184, 166, 0.7);
+}
+
+/* Stars background effect */
+.stars-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(1px 1px at 25% 25%, rgba(255, 255, 255, 0.6) 1px, transparent 0),
+    radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.6) 1px, transparent 0),
+    radial-gradient(1px 1px at 75% 75%, rgba(255, 255, 255, 0.6) 1px, transparent 0),
+    radial-gradient(2px 2px at 10% 10%, rgba(255, 255, 255, 0.6) 1px, transparent 0),
+    radial-gradient(2px 2px at 30% 70%, rgba(255, 255, 255, 0.6) 1px, transparent 0),
+    radial-gradient(2px 2px at 70% 30%, rgba(255, 255, 255, 0.6) 1px, transparent 0),
+    radial-gradient(2px 2px at 90% 90%, rgba(255, 255, 255, 0.6) 1px, transparent 0);
+  background-size: 300px 300px, 250px 250px, 200px 200px, 400px 400px, 350px 350px, 300px 300px, 500px 500px;
+  animation: starsAnimation 100s linear infinite;
+}
+
+@keyframes starsAnimation {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 300px 300px, 250px 250px, 200px 200px, 400px 400px, 350px 350px, 300px 300px, 500px 500px;
+  }
+}
+
+/* Quantum text styling */
+.quantum-text {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+  transition: all 0.5s ease;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+}
+
+.quantum-text:hover {
+  text-shadow: 0 0 15px rgba(34, 211, 238, 0.8), 0 0 30px rgba(34, 211, 238, 0.4);
+  letter-spacing: 0.08em;
+}
+
+/* Enhanced glow effects for stack layers */
+.stack-glow {
+  filter: drop-shadow(0 0 8px rgba(0, 200, 255, 0.3));
+  transition: all 0.5s ease;
+}
+
+.hover-glow {
+  position: relative;
+}
+
+.hover-glow::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 10px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hover-glow:hover {
+  filter: drop-shadow(0 0 15px var(--glow-color, rgba(0, 200, 255, 0.7)));
+  transform: translateY(-5px) scale(1.02) !important;
+}
+
+.hover-glow:hover::after {
+  opacity: 0.8;
+}
+
+.hover-glow[data-color="#00f2fe"] {
+  --glow-color: rgba(0, 242, 254, 0.7);
+}
+
+.hover-glow[data-color="#ff00e4"] {
+  --glow-color: rgba(255, 0, 228, 0.7);
+}
+
+.hover-glow[data-color="#00d4ff"] {
+  --glow-color: rgba(0, 212, 255, 0.7);
+}
+
+.hover-glow[data-color="#7b4bff"] {
+  --glow-color: rgba(123, 75, 255, 0.7);
+}
+
+/* Remove the layer-glow and layer-glow-effect classes since we're reverting to the old style */
+.layer-glow {
+  position: relative;
+}
+
+/* Quantum particles animation */
+.quantum-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.quantum-particles::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 100px 100px, 120px 120px, 70px 70px;
+  animation: enhancedParticlesDrift 60s linear infinite;
+}
+
+.quantum-particles::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 80% 10%, rgba(34, 211, 238, 0.4) 1px, transparent 8px),
+    radial-gradient(circle at 15% 85%, rgba(34, 211, 238, 0.4) 1px, transparent 8px),
+    radial-gradient(circle at 40% 50%, rgba(255, 255, 255, 0.3) 1px, transparent 6px);
+  background-size: 180px 180px, 200px 200px, 150px 150px;
+  animation: enhancedParticlesPulse 8s ease-in-out infinite alternate;
+  filter: blur(1px);
+}
+
+@keyframes enhancedParticlesDrift {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes enhancedParticlesPulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+
+/* Quantum grid effect */
+.quantum-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, rgba(34, 211, 238, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 211, 238, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: center top;
+  animation: gridPulse 10s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+  0% {
+    opacity: 0.2;
+    background-size: 40px 40px;
+  }
+  50% {
+    opacity: 0.5;
+    background-size: 42px 42px;
+  }
+  100% {
+    opacity: 0.2;
+    background-size: 40px 40px;
+  }
+}
+
+/* Enhanced indicator glow effect */
+.indicator-glow {
+  box-shadow: 0 0 8px 2px rgba(34, 211, 238, 0.5);
+  animation: enhancedIndicatorPulse 2s ease-in-out infinite;
+}
+
+@keyframes enhancedIndicatorPulse {
+  0% {
+    box-shadow: 0 0 8px 2px rgba(34, 211, 238, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(34, 211, 238, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 8px 2px rgba(34, 211, 238, 0.5);
+  }
+}
+
+/* Add a new section title style */
+.section-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #22d3ee, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+  margin-bottom: 1rem;
+}
+
+/* Add content transition animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.content-transition-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.content-transition-left {
+  animation: fadeInLeft 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.content-transition-right {
+  animation: fadeInRight 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
